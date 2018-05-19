@@ -4,45 +4,59 @@ namespace Exercise_1
 {
     class Program
     {
+        private static string ZombieStatusIfElseMethod(int statustype)
+        {
+                if (statustype == 1)
+                    return ("Alive");
+                else if (statustype == 2)
+                    return ("Zombie");
+                else if (statustype == 3)
+                    return ("Dead");
+                else if (statustype == 4)
+                    return ("Unknown");
+                
+                return "NULL";
+        }
+
+        private static string ZombieStatusSwitchMethod(int statustype)
+        {
+                switch (statustype)
+                {
+                    case 1:
+                        return ("Alive");
+                        break;
+                    case 2:
+                        return ("Zombie");
+                        break;
+                    case 3:
+                        return ("Dead");
+                        break;
+                    case 4:
+                        return ("Unknown");
+                        break;
+                }
+                return "NULL";
+        }
+
         static void Main(string[] args)
         {
             int[] GovEmployeeStatus = new int[] {1, 3, 4, 2, 3};
-            string statustatement = "Status of all government emplyoyees:";
+            string[] GovviesNames = new string[] {"Bobby", "JR", "Sue Ellen", "Ray Ray", "Gandolf"};
+            string statustatement = "Status of government emplyoyee ";
 
             Console.WriteLine("\nIf/else code:");
 
             for (int counter = 0; counter < GovEmployeeStatus.Length; counter++)
             {
-                if (GovEmployeeStatus[counter] == 1)
-                    Console.WriteLine(statustatement + " Alive");
-                else if (GovEmployeeStatus[counter] == 2)
-                    Console.WriteLine(statustatement + " Zombie");
-                else if (GovEmployeeStatus[counter] == 3)
-                    Console.WriteLine(statustatement + " Dead");
-                else if (GovEmployeeStatus[counter] == 4)
-                    Console.WriteLine(statustatement + " Unknown");
+                    Console.WriteLine(statustatement + GovviesNames[counter] +": " + ZombieStatusIfElseMethod(GovEmployeeStatus[counter]));
             }
 
             Console.WriteLine("\nSwitch statement code:");
 
             for (int counter = 0; counter < GovEmployeeStatus.Length; counter++)
             {
-                switch (GovEmployeeStatus[counter])
-                {
-                    case 1:
-                        Console.WriteLine(statustatement + " Alive");
-                        break;
-                    case 2:
-                        Console.WriteLine(statustatement + " Zombie");
-                        break;
-                    case 3:
-                        Console.WriteLine(statustatement + " Dead");
-                        break;
-                    case 4:
-                        Console.WriteLine(statustatement + " Unknown");
-                        break;
-                }
-            }    
+                    Console.WriteLine(statustatement + GovviesNames[counter] +": " + ZombieStatusSwitchMethod(GovEmployeeStatus[counter]));
+            }
 
             Console.WriteLine("\n");
         }
