@@ -6,36 +6,42 @@ namespace Exercise_1
     {
         static void Main(string[] args)
         {
-            int GovEmployeeStatus = 4;
+            int[] GovEmployeeStatus = new int[] {1, 3, 4, 2, 3};
             string statustatement = "Status of all government emplyoyees:";
 
             Console.WriteLine("\nIf/else code:");
 
-            if (GovEmployeeStatus == 1)
-                Console.WriteLine(statustatement + " Alive");
-            else if (GovEmployeeStatus == 2)
-                Console.WriteLine(statustatement + " Zombie");
-            else if (GovEmployeeStatus == 3)
-                Console.WriteLine(statustatement + " Dead");
-            else if (GovEmployeeStatus == 4)
-                Console.WriteLine(statustatement + " Unknown");
+            for (int counter = 0; counter < GovEmployeeStatus.Length; counter++)
+            {
+                if (GovEmployeeStatus[counter] == 1)
+                    Console.WriteLine(statustatement + " Alive");
+                else if (GovEmployeeStatus[counter] == 2)
+                    Console.WriteLine(statustatement + " Zombie");
+                else if (GovEmployeeStatus[counter] == 3)
+                    Console.WriteLine(statustatement + " Dead");
+                else if (GovEmployeeStatus[counter] == 4)
+                    Console.WriteLine(statustatement + " Unknown");
+            }
 
             Console.WriteLine("\nSwitch statement code:");
 
-            switch (GovEmployeeStatus)
+            for (int counter = 0; counter < GovEmployeeStatus.Length; counter++)
             {
-                case 1:
-                    Console.WriteLine(statustatement + " Alive");
-                    break;
-                case 2:
-                    Console.WriteLine(statustatement + " Zombie");
-                    break;
-                case 3:
-                    Console.WriteLine(statustatement + " Dead");
-                    break;
-                case 4:
-                    Console.WriteLine(statustatement + " Unknown");
-                    break;
+                switch (GovEmployeeStatus[counter])
+                {
+                    case 1:
+                        Console.WriteLine(statustatement + " Alive");
+                        break;
+                    case 2:
+                        Console.WriteLine(statustatement + " Zombie");
+                        break;
+                    case 3:
+                        Console.WriteLine(statustatement + " Dead");
+                        break;
+                    case 4:
+                        Console.WriteLine(statustatement + " Unknown");
+                        break;
+                }
             }    
 
             Console.WriteLine("\n");
