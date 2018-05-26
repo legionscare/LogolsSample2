@@ -4,9 +4,58 @@ namespace Exercise_1
 {
     class Program
     {
+        private static string ZombieStatusIfElseMethod(int statustype)
+        {
+                if (statustype == 1)
+                    return ("Alive");
+                else if (statustype == 2)
+                    return ("Zombie");
+                else if (statustype == 3)
+                    return ("Dead");
+                else if (statustype == 4)
+                    return ("Unknown");
+                
+                return "NULL";
+        }
+
+        private static string ZombieStatusSwitchMethod(int statustype)
+        {
+                switch (statustype)
+                {
+                    case 1:
+                        return ("Alive");                        
+                    case 2:
+                        return ("Zombie");                        
+                    case 3:
+                        return ("Dead");
+                    case 4:
+                        return ("Unknown");
+                }
+
+                return "NULL";
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] GovEmployeeStatus = new int[] {1, 3, 4, 2, 3};
+            string[] GovviesNames = new string[] {"Bobby", "JR", "Sue Ellen", "Ray Ray", "Gandolf"};
+            string statustatement = "Status of government emplyoyee ";
+
+            Console.WriteLine("\nIf/else statement code:");
+
+            for (int counter = 0; counter < GovEmployeeStatus.Length; counter++)
+            {
+                    Console.WriteLine(statustatement + GovviesNames[counter] +": " + ZombieStatusIfElseMethod(GovEmployeeStatus[counter]));
+            }
+
+            Console.WriteLine("\nSwitch statement code:");
+
+            for (int counter = 0; counter < GovEmployeeStatus.Length; counter++)
+            {
+                    Console.WriteLine(statustatement + GovviesNames[counter] +": " + ZombieStatusSwitchMethod(GovEmployeeStatus[counter]));
+            }
+
+            Console.WriteLine("\n");
         }
     }
 }
