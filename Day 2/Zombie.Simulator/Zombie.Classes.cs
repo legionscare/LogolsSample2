@@ -22,16 +22,26 @@ namespace Zombie.Simulator
         }
     }
 
-    public sealed class Human : Person
+    public virtual class Human : IPerson
     {
+        public virtual decimal DistanceTraveled {get; set;} 
+
         public Human()
         {
-            Console.WriteLine("A new human has arrived.");
+            Console.WriteLine("The new person is a human.");
         }
-
+        
+        public virtual int CalculateWalkDistance(decimal minutes)
+        {
+            return ((int) minutes) * 10;
+        }
+        public virtual void Walk(decimal minutes)
+        {
+            DistanceTraveled = CalculateWalkDistance(minutes);
+        }
         public void Run(decimal minutes)
         {
-            DistanceTraveled = CalculateWalkDistance((int) minutes) * 5;
+            IPerson.DistanceTraveled = CalculateWalkDistance((int) minutes) * 5;
         }
     }
 
@@ -39,12 +49,23 @@ namespace Zombie.Simulator
     {
         public Zombie()
         {
-            Console.WriteLine("A new zombie has arrived.");
+            Console.WriteLine("The new person is a zombie.");
         }
 
         public override int CalculateWalkDistance(decimal minutes)
         {
             return ((int) minutes) / 2;
         }
+    }
+
+    public interface IPerson
+    {
+        decimal DistanceTraveled {get; set;}
+
+        void Walk(decimal minutes);
+    
+        void Run(decimal minutes);
+
+        int CalculateWalkDistance(decimal minutes); 
     }
 }
