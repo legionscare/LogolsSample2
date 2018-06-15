@@ -17,9 +17,12 @@ namespace ZombieWebAPI
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
+
             var connectionStringConfig = builder.Build();
+            
             connectionString = connectionStringConfig.GetConnectionString("DefaultConnection");
         }
+
         public IDbConnection Connection
         {
             get
