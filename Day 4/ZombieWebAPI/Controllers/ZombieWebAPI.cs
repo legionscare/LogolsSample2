@@ -19,17 +19,15 @@ namespace ZombieWebAPI.Controllers
             return new string[] { "1", "2" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(string id)
+        // GET api/ZombieWebAPI/report
+        [HttpGet("{QueryType}")]
+        public string Get(string QueryType)
         {
-            switch (id)
+            switch (QueryType)
             {
                 case "report":
                 
-                    MainProgram.QueryRepository.QueryReport();
-
-                    Console.WriteLine ("Sent query report to web");
+                    MainProgram.QueryRepository.QueryReportHumans();
 
                     return "Query:\n\n"
                         + MainProgram.QueryRepository.SqlQuery
@@ -50,6 +48,91 @@ namespace ZombieWebAPI.Controllers
             }
 
             return "nothing to see here";
+        }
+
+        // GET api/ZombieWebAPI/report/idk
+        [HttpGet("{QueryType}/{NotImplemented}")]
+        public string Get(string QueryType, string NotImplemented)
+        {
+            switch (QueryType)
+            {
+                default:
+                
+                    break;                
+            }
+
+            return "nothing to see here";
+        }
+
+        // GET api/ZombieWebAPI/delete/Michael/Jackson
+        [HttpGet("{QueryType}/{FirstName}/{LastName}")]
+        public string Get(string QueryType, string FirstName, string LastName)
+        {
+            switch (QueryType)
+            {
+                case "get":
+
+                    MainProgram.QueryRepository.QueryGetHuman(FirstName, LastName);
+ 
+                    return "Query:\n\n"
+                        + MainProgram.QueryRepository.SqlQuery
+                        + "\n\nReport: \n\n"
+                        + MainProgram.QueryRepository.SqlReport;
+                
+                case "delete":
+
+                    MainProgram.QueryRepository.QueryDeleteHuman(FirstName, LastName);
+ 
+                    return "Query:\n\n"
+                        + MainProgram.QueryRepository.SqlQuery
+                        + "\n\nReport: \n\n"
+                        + MainProgram.QueryRepository.SqlReport;
+
+                default:
+                
+                    break;                
+            }
+
+            return "nothing to see here";
+        }
+
+        // GET api/ZombieWebAPI/insert/Michael/Jackson/3
+        [HttpGet("{QueryType}/{FirstName}/{LastName}/{StatusType}")]
+        public string Get(string QueryType, string FirstName, string LastName, int StatusType)
+        {
+            if ((StatusType >= 0) && (StatusType <= 5))
+            {        
+                switch (QueryType)
+                {
+                    case "insert":
+
+                        MainProgram.QueryRepository.QueryInsertHuman(FirstName, LastName, StatusType);
+
+                        return "Query:\n\n"
+                            + MainProgram.QueryRepository.SqlQuery
+                            + "\n\nReport: \n\n"
+                            + MainProgram.QueryRepository.SqlReport;
+
+                    case "update":
+
+                        MainProgram.QueryRepository.QueryUpdateHuman(FirstName, LastName, StatusType);
+
+                        return "Query:\n\n"
+                            + MainProgram.QueryRepository.SqlQuery
+                            + "\n\nReport: \n\n"
+                            + MainProgram.QueryRepository.SqlReport;
+
+                    default:
+
+                        break;                
+                }
+                
+                return "nothing to see here";
+            }
+            else
+            {
+                return "invalid status type encountered";
+            }
         }
 
         // POST api/values
