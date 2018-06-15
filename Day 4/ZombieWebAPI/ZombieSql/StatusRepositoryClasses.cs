@@ -1,4 +1,4 @@
-namespace ZombieWebAPI
+namespace ZombieSqlAPI
 {
     public class Status
     {

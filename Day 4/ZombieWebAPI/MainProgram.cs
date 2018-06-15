@@ -10,13 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Dapper;
 
+using ZombieSqlAPI;
 using ZombieWebAPI;
 
 namespace ZombieMain
 {
     public class Program
     {
-        public static StatusRepository QueryRepository = new StatusRepository();
+        public static StatusRepository QueryRepository = new StatusRepository("MainSqlConnection1");
 
         public static void Main(string[] args)
         {

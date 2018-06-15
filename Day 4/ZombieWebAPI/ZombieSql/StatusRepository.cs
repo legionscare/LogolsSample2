@@ -4,23 +4,18 @@ using System.Data;
 using Dapper;
 using System.Linq;
 
-namespace ZombieWebAPI
+namespace ZombieSqlAPI
 {
     public class StatusRepository : Repository
     {
-        public string SqlQuery { get; set; }
-        public string SqlReport { get; set; }
-
-        private List<Status> FetchSqlQuery()
+        public StatusRepository(params string[] SqlConnectorConfig)
         {
-            List<Status> QueryStatuses = new List<Status>();
-
-            using (IDbConnection dbConnection = Connection)
+            if (SqlConnectorConfig.Length > 0)
             {
-                dbConnection.Open();
-                
-                return dbConnection.Query<Status>(SqlQuery, commandType : CommandType.Text).ToList();
+                RepositorySqlConnector = SqlConnectorConfig[0];
             }
+
+            InitializeSqlConnector();
         }
 
         private void BuildSqlReport(List<Status> QueryStatuses)
@@ -51,6 +46,17 @@ namespace ZombieWebAPI
             return QueryStatuses;
         }
 
+        public void QueryGetHuman(string FirstName, string LastName)
+        {
+            SqlQuery = "SELECT p.FirstName, p.LastName, ps.StatusDescription "
+                + "FROM person p INNER JOIN personstatus ps ON p.PersonStatusId = ps.PersonStatusId " 
+                + "WHERE ( FirstName = '" + FirstName + "' && LastName = '" + LastName + "' );";
+
+            List<Status> QueryStatuses = FetchSqlQuery();
+
+            BuildSqlReport(QueryStatuses);
+        }
+    
         public void QueryInsertHuman(string FirstName, string LastName, int StatusType)
         {
             SqlQuery = "INSERT INTO Person ( FirstName, LastName, PersonStatusId ) VALUES "
@@ -81,17 +87,6 @@ namespace ZombieWebAPI
             FetchSqlQuery();
 
             SqlReport = "* Deleted " + FirstName + " " + LastName;
-        }
-
-        public void QueryGetHuman(string FirstName, string LastName)
-        {
-            SqlQuery = "SELECT p.FirstName, p.LastName, ps.StatusDescription "
-                + "FROM person p INNER JOIN personstatus ps ON p.PersonStatusId = ps.PersonStatusId " 
-                + "WHERE ( FirstName = '" + FirstName + "' && LastName = '" + LastName + "' );";
-
-            List<Status> QueryStatuses = FetchSqlQuery();
-
-            BuildSqlReport(QueryStatuses);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+using ZombieSqlAPI;
 using MainProgram = ZombieMain.Program;
 
 namespace ZombieWebAPI.Controllers
@@ -15,7 +16,6 @@ namespace ZombieWebAPI.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            Console.WriteLine ("Sent some stuff");
             return new string[] { "1", "2" };
         }
 
@@ -37,13 +37,10 @@ namespace ZombieWebAPI.Controllers
                 case "kill-exit":
 
                     Console.WriteLine ("Abandoned all ye hope");
-
                     Environment.Exit(1);
-
                     break;
 
                 default:
-                
                     break;                
             }
 
@@ -57,7 +54,6 @@ namespace ZombieWebAPI.Controllers
             switch (QueryType)
             {
                 default:
-                
                     break;                
             }
 
