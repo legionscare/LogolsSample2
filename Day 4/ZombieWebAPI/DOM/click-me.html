@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    
+        <link rel = "stylesheet" href = "../wwwroot/css/zombiestyle.css" type = "text/css" >
+
+        <script src="./demo-me.js"></script>
+
+   
+
+        <title>
+            Click Bait
+        </title>
+    </head>
+
+    <body>
+    <!-- 
+        Comments can 
+        go here 
+    -->
+
+    <hr />
+
+    <header id = "header">
+        <h1> <b> Clickitty Click Click! </b> </h1>
+    </header>
+
+    <hr />
+
+
+
+    <div> <center>
+        <button id="click-on-me" onclick="ChangeMyLife()">
+                <center> <p> Me </p> <p> Not Ready!</p> <p> You </p> </center> 
+        </button> 
+    </center> </div>
+
+    <hr />
+
+    <script>
+            let container = document.getElementById("click-on-me");
+            container.innerHTML = "<center> <p> Me </p> <p> Satisfaction guaranteed!</p> <p> You </p> </center>";
+    </script>
+
+
+    <!--
+    <script> ChangeMyLife(); </script>
+    
+    <hr />
+
+    </body>
+
+    <script>
+            let container = document.getElementById("click-on-me");
+            let newParagraph = document.createElement("p");
+    
+            newParagraph.innerHTML = "Satisfaction guaranteed!";
+            container.appendChild(newParagraph);
+    </script>
+    -->
+        
+    </html>

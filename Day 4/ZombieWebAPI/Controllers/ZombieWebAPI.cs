@@ -25,6 +25,21 @@ namespace ZombieWebAPI.Controllers
         {
             switch (QueryType)
             {
+                case "create":
+
+                    MainProgram.QueryRepository.CreateDatabase();
+
+                    return "* Creating database";
+                        
+                case "execute":
+
+                    MainProgram.QueryRepository.ExecuteSchemaFile("\\SqlSchemas\\Day 3 - SQL Zombies.sql");
+
+                    return "Query:\n\n"
+                        + MainProgram.QueryRepository.SqlQuery
+                        + "\n\nReport: \n\n"
+                        + MainProgram.QueryRepository.SqlReport;
+
                 case "report":
                 
                     MainProgram.QueryRepository.QueryReportHumans();
@@ -143,10 +158,18 @@ namespace ZombieWebAPI.Controllers
         {
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // DELETE api/Michael/Jackson
+        [HttpDelete("{FirstName}/{LastName}")]
+        public void Delete(String FirstName, string LastName)
         {
+            MainProgram.QueryRepository.QueryDeleteHuman(FirstName, LastName);
+
+        /* 
+            return "Query:\n\n"
+                + MainProgram.QueryRepository.SqlQuery
+                + "\n\nReport: \n\n"
+                + MainProgram.QueryRepository.SqlReport;
+        */
         }
     }
 }

@@ -38,7 +38,6 @@ namespace ZombieSqlAPI
 
         public string SqlQuery { get; set; }
         public string SqlReport { get; set; }
-
         internal List<Status> FetchSqlQuery()
         {
             List<Status> QueryStatuses = new List<Status>();

@@ -1,0 +1,110 @@
+#header {
+    text-align: center;
+    color: red;
+}
+
+#topic {
+    text-align: center;
+    color: #2F4F4F;
+}
+
+#tablebox{
+    display: flex;
+    justify-content: center;
+
+}
+
+#formalign{
+    display: flex;
+    justify-content: space-around;
+    
+    color: #2F4F4F;
+}
+
+#formcenter
+{
+    color: #2F4F4F;
+}
+
+#addbutton{
+    display: flex;
+    justify-content: center;
+
+    text-align: center;
+    color: #2F4F4F;
+}
+
+#zombie-grids
+{
+    display: grid;
+    grid-template-areas: 
+    'left left middle middle right right' 
+}
+
+#zombie-grids-column-left
+{
+    grid-area: left;
+}
+
+#zombie-grids-column-middle
+{
+    display: flex;
+    justify-content: center;
+
+    grid-area: middle;
+}
+
+#zombie-grids-column-right
+{
+    grid-area: right;
+}
+
+#zombie-grid-container
+{
+    display: inline-grid;
+
+    grid-template-columns: auto auto auto auto;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+#zombie-grid-item-header
+{
+    background-color: #2F4F4F;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.zombie-grid-item
+{
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    text-align: center;
+}
+
+
+#tableheaderbox
+{
+    color: #2F4F4F;
+}
+
+
+
+#firstflexbox
+{
+    display: flex;
+    justify-content: center;
+}
+
+#boxxy1
+{
+    order:2;   
+}
+
+#boxxy2
+{
+    order:1
+}

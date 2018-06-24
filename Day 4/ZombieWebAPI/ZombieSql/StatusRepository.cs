@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using Dapper;
 using System.Linq;
+using System.IO;
 
 namespace ZombieSqlAPI
 {
@@ -31,6 +32,44 @@ namespace ZombieSqlAPI
                     + " }\n";
             }
         }   
+
+
+
+
+
+        public void CreateDatabase()
+        {
+            SqlQuery = "DROP DATABASE testdatabase; "
+                + "CREATE DATABASE testdatabase; "
+                + "/* Create schemas */"
+                + "USE testdatabase; "
+                + "CREATE TABLE Person ( "
+                +   "PersonId int NOT NULL AUTO_INCREMENT, "
+                +   "FirstName varchar(20), "
+                +   "LastName varchar(20), "
+                +   "PersonStatusId int, "
+                +   "PRIMARY KEY (PersonId) "
+                +   ");";
+
+            FetchSqlQuery();
+
+            SqlReport = "* Created database";
+        }
+
+        public void ExecuteSchemaFile(string SchemaFilename)
+        {
+            SchemaFilename = Directory.GetCurrentDirectory() + SchemaFilename;
+
+            SqlQuery = File.ReadAllText(SchemaFilename);
+
+            List<Status> QueryStatuses = FetchSqlQuery();
+            BuildSqlReport(QueryStatuses);
+
+            SqlReport = "* Imported schema from location: " + SchemaFilename
+                + "\n\n" + SqlReport;
+        }
+
+
 
         public List<Status> QueryReportHumans()
         {
