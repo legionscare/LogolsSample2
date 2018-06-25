@@ -3,34 +3,23 @@ interface OutputInterface
     (OutputText: string): void;
 }
 
-class ZombiePersonnel
-{
-    public FirstName: string;
-    public LastName: string;
-    public Status: number;
-}
-
 class ZombieWorld
 {
-    public Zombies: ZombiePersonnel[] = [];
+    public FirstName: string[] = [];
+    public LastName: string[] = [];
+    public Status: number[] = [];
     
-    public ZombieCount;
+    public ZombieCount = 0;
 
-    private OutputRoute: OutputInterface;
-
-    constructor()
-    {
-        /* Nothing special to do here */
-
-        this.ZombieCount = 0;
-        this.OutputRoute = OutputToConsole;
-    }
+    private OutputRoute: OutputInterface = OutputToConsole;
     
     public AddZombie(FName: string, LName: string, StatusType: number): void
     {
         console.log("Adding #" + this.ZombieCount + ": " + FName + " " + LName);
 
-        this.Zombies[this.ZombieCount] = { FirstName: FName, LastName: LName, Status: StatusType };
+        this.FirstName[this.ZombieCount] = FName;
+        this.LastName[this.ZombieCount] = LName;
+        this.Status[this.ZombieCount] = StatusType;
 
         this.ZombieCount++;
     }
@@ -56,7 +45,7 @@ let Status: string;
 
 for (let count: number = 0; count < PlanetZombie.ZombieCount; ++count)
 {
-    StatusResponse = PlanetZombie.Zombies[count].Status;
+    StatusResponse = PlanetZombie.Status[count];
 
     // If/else method
 
@@ -67,7 +56,7 @@ for (let count: number = 0; count < PlanetZombie.ZombieCount; ++count)
         Status = ReturnStatus(StatusResponse);
     }
     
-    PlanetZombie.OutputZombies(PlanetZombie.Zombies[count].FirstName + " " + PlanetZombie.Zombies[count].LastName
+    PlanetZombie.OutputZombies(PlanetZombie.FirstName[count] + " " + PlanetZombie.LastName[count]
         + " is status: " + Status + " (if/else method)");
 
     // Switch method
@@ -97,10 +86,11 @@ for (let count: number = 0; count < PlanetZombie.ZombieCount; ++count)
             break;
     }
 
-    PlanetZombie.OutputZombies(PlanetZombie.Zombies[count].FirstName + " " + PlanetZombie.Zombies[count].LastName
+    PlanetZombie.OutputZombies(PlanetZombie.FirstName[count] + " " + PlanetZombie.LastName[count]
         + " is status: " + Status + " (switch method)");
 }
 
+/*
 console.log ("- For/of method:");
 
 for (let Dude of PlanetZombie.Zombies)
@@ -108,6 +98,7 @@ for (let Dude of PlanetZombie.Zombies)
     PlanetZombie.OutputZombies(Dude.FirstName + " " + Dude.LastName + " is " 
         + ReturnStatus(Dude.Status));
 }
+*/
 
 function ReturnStatus(statusNumber: number): string
 {
