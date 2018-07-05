@@ -71,29 +71,23 @@ namespace ZombieSqlAPI
 
 
 
-        public List<Status> QueryReportHumans()
+        public List<Status> QueryReportAllHumans()
         {
             SqlQuery = "SELECT p.FirstName, p.LastName, ps.StatusDescription "
                 + "FROM person p "
                 + "INNER JOIN personstatus ps "
                 + "ON p.PersonStatusId = ps.PersonStatusId;";    
 
-            List<Status> QueryStatuses = FetchSqlQuery();
-
-            BuildSqlReport(QueryStatuses);
-
-            return QueryStatuses;
+            return FetchSqlQuery();
         }
 
-        public void QueryGetHuman(string FirstName, string LastName)
+        public List<Status> QueryGetHuman(string FirstName, string LastName)
         {
             SqlQuery = "SELECT p.FirstName, p.LastName, ps.StatusDescription "
                 + "FROM person p INNER JOIN personstatus ps ON p.PersonStatusId = ps.PersonStatusId " 
                 + "WHERE ( FirstName = '" + FirstName + "' && LastName = '" + LastName + "' );";
 
-            List<Status> QueryStatuses = FetchSqlQuery();
-
-            BuildSqlReport(QueryStatuses);
+            return FetchSqlQuery();
         }
     
         public void QueryInsertHuman(string FirstName, string LastName, int StatusType)

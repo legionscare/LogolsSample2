@@ -1,0 +1,73 @@
+<style>
+
+ul {
+    list-style-type: none;
+    text-align: center;
+
+    position: relative;
+    margin: 10%;
+    padding: 0px;
+    width: 80%;
+
+    background-color: #f1f1f1;
+    border: 2px solid #555;
+}
+                
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+                
+li {
+    text-align: center;
+}
+                
+li:last-child {
+    border-bottom: none;
+}
+                
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+                
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+</style>
+
+    <div class = "headertitle">
+        <b> {{ headertitle }} </b>
+    </div>
+
+    <div class = "zombie-page">
+                <div class = "zombie-page-menu">
+                            <ul class = "rcorners1">
+                                <br>
+                                <li> <a [routerLink] = "['/']" class = "active" > Home </a> </li>
+                                <li> <a [routerLink] = "['/report']" > Full Status Report </a> </li>
+                                <li> <a [routerLink] = "['/addStatus']" > Add Person </a> </li>
+                                <li> <a [routerLink] = "['/updateStatus']" > Update Person </a> </li>
+                                <li> <a [routerLink] = "['/deleteStatus']" > Delete Person </a> </li>
+                                <li> <a [routerLink] = "['/error']" > Error 404 </a> </li>
+                                <br>
+                            </ul>
+                        
+                            <ul>
+                                <li> <img src = "./assets/img/FinalZombie.jpg" width="100%" alt="Zombie"> </li>
+                            </ul>
+                </div>
+
+                <div class = "zombie-page-content"> 
+                        <router-outlet> </router-outlet>
+                </div>
+    </div>
+    
+    <div class = "footertitle">
+        <b> {{ footertitle }} </b>
+    </div>

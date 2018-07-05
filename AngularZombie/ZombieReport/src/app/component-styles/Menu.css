@@ -1,0 +1,11 @@
+.rounded-corners1 {
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+}
+
+.rounded-corners2 {
+    border-radius: 15px;
+    background-color: #ffffff;
+    padding: 0px;
+}

@@ -1,0 +1,79 @@
+.headertitle {
+    grid-area: header;
+
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+
+    word-wrap: normal;
+}
+
+.footertitle {
+    grid-area: footer;
+    
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+
+    word-wrap: normal;
+    height: 24px;
+}
+
+.zombie-page-menu {
+    grid-area: sidebar;
+
+    min-height: calc(100vh - 67px);
+}
+
+.zombie-page-content {
+    grid-area: content;
+
+    min-height: calc(100vh - 109px);
+}
+
+.zombie-page-wrapper {
+    display: grid;
+
+    grid-gap: 6px;
+    grid-template-columns: 240px auto auto auto;
+    grid-template-areas:
+        "header  header  header  header"
+        "sidebar content content content"
+        "sidebar content content content"
+        "sidebar footer  footer  footer";
+}
+
+.box {
+    z-index: 1000;
+
+    border: 2px solid #555;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 4px; 
+}
+
+
+.rounded-corners1 {
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+}
+
+.rounded-corners2 {
+    border-radius: 15px;
+    background-color: #ffffff;
+    padding: 0px;
+}
+
+
+.error404body
+{
+    width: 100%;
+    height: 100%;
+
+    background-image: url('/assets/img/gog-404-page.png');
+    background-color: #CCCCCC;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}

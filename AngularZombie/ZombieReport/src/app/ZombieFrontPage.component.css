@@ -1,0 +1,19 @@
+.pagetitleclass {
+    text-align: left;
+}
+
+.imgfloat
+{
+    float: right;
+    border: 2px solid #000000;
+}
+.imgcenter
+{
+    text-align: center;
+}
+
+.blockparagraph
+{
+    padding-left: 30px;
+    padding-right: 30px;
+}

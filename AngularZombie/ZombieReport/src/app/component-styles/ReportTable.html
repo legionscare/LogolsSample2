@@ -1,0 +1,11 @@
+<table class = "zombie-grid-container">
+    <tr>
+      <td class = "zombie-grid-item-header"> Name </td>
+      <td class = "zombie-grid-item-header"> Status Description </td>
+    </tr>
+  
+    <tr *ngFor = "let status of statuses">
+      <td class = "zombie-grid-item"> {{ status.lastName }}, {{ status.firstName }} </td>
+      <td class = "zombie-grid-item"> {{ status.statusDescription }} </td>
+    </tr>
+</table>

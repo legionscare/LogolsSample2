@@ -1,0 +1,125 @@
+.headertitle {
+    width: 99%;
+    
+    text-align:center;
+    font-size:18px;
+    word-wrap:normal;
+    margin:2px 2px;
+    line-height:30px;
+
+    border: 2px solid #555;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+
+    font-family: Helvetica;
+    font-size: 1em;
+    z-index: 1000;
+}
+
+.bodysection {
+    height: 100%;
+    width: 99%;
+
+    border: 2px solid #555;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+
+
+    position: absolute;
+    top: 38px;
+    left: 0px;
+}
+
+.pagetitle {
+    text-align: left;
+}
+
+.footertitle {
+    width: 99%;
+    
+    text-align:center;
+    font-size:18px;
+    word-wrap:normal;
+    margin:2px 2px;
+    line-height:30px;
+
+    border: 2px solid #555;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+
+    font-family: Helvetica;
+    font-size: 1em;
+
+    position: fixed;
+    z-index: 1000;
+    bottom: 0px;
+    left: 0px;
+}
+
+
+.imgfloat
+{
+    float: right;
+    border:3px solid #000000;
+}
+
+.zombie-page
+{
+    background-color: #fff;
+    color: #444;
+}
+
+.zombie-page
+{
+    display: grid;
+    grid-template-columns: 250px calc(99% - 250px);
+    grid-gap: 4px;
+}
+.zombie-page-menu
+{
+    z-index: 1000;
+
+    width: 250px;
+
+    border: 2px solid #555;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+}
+
+.zombie-page-content
+{
+    width: calc(99% - 250px);
+
+    border: 2px solid #555;
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+}
+
+
+.rcorners1 {
+    border-radius: 15px;
+    background-color: #CCCCCC;
+    padding: 0px; 
+}
+
+.rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 200px;
+    height: 150px; 
+}
+
+.rcorners3 {
+    border-radius: 25px;
+    background-position: left top;
+    background-repeat: repeat;
+    padding: 20px; 
+    width: 200px;
+    height: 150px; 
+}

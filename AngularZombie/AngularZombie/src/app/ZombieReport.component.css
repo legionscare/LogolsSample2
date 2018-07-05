@@ -139,13 +139,3 @@
     display: flex;
     justify-content: center;
 }
-
-.boxxy1
-{
-    order:2;   
-}
-
-.boxxy2
-{
-    order:1
-}

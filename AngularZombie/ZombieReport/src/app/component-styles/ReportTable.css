@@ -1,0 +1,25 @@
+.zombie-grid-container
+{
+    display: grid;
+
+    grid-template-columns: auto auto;
+    background-color: #CCCCCC;
+    padding: 2px;
+}
+
+.zombie-grid-item-header
+{
+    background-color: #A5A5A5;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.zombie-grid-item
+{
+    background-color: #CCCCCC;
+    border: 2px solid #000000;
+    padding: 5px;
+    text-align: center;
+}

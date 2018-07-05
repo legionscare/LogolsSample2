@@ -1,9 +1,9 @@
 interface OutputInterface
 {
-    (OutputText: string): void;
+    (OutputText: string): string;
 }
 
-class ZombiePersonnel
+class Personnel
 {
     public FirstName: string;
     public LastName: string;
@@ -12,116 +12,134 @@ class ZombiePersonnel
 
 class ZombieWorld
 {
-    public Zombies: ZombiePersonnel[] = [];
+    public Population: Personnel[] = [];
     
     public ZombieCount;
 
     private OutputRoute: OutputInterface;
+    private OutputTypes: string[] = ["Console", "Database", "Web", "String"];
 
     constructor()
     {
-        /* Nothing special to do here */
-
+        /* No zombies in this world.. yet */
         this.ZombieCount = 0;
-        this.OutputRoute = OutputToConsole;
+
+        /* Default output to log */
+        this.OutputRoute = this.OutputToConsoleLog;
     }
     
-    public AddZombie(FName: string, LName: string, StatusType: number): void
+    public AddPerson(FName: string, LName: string, StatusType: number): void
     {
         console.log("Adding #" + this.ZombieCount + ": " + FName + " " + LName);
 
-        this.Zombies[this.ZombieCount] = { FirstName: FName, LastName: LName, Status: StatusType };
+        this.Population[this.ZombieCount] = { FirstName: FName, LastName: LName, Status: StatusType };
 
         this.ZombieCount++;
     }
 
-    public OutputZombies(OutputTexts: string): void
+    public OutputPersonnel(OutputTexts: string): string
     {
-        this.OutputRoute(OutputTexts);
-    }    
+        return this.OutputRoute(OutputTexts);
+    }
+
+    public SelectOutputType(OutputType:string): void
+    {
+        switch (OutputType)
+        {
+            case "Console":
+                this.OutputRoute = this.OutputToConsoleLog;
+                break;
+
+            case "Database":
+                this.OutputRoute = this.OutputToConsoleLog;
+                break;
+
+            case "Web":
+                this.OutputRoute = this.OutputToConsoleLog;
+                break;
+
+            case "String":
+                this.OutputRoute = this.OutputToConsoleLog;
+                break;
+
+            default:
+                this.OutputRoute = this.OutputToNowhere;
+                break;
+            }
+    }
+
+    /* Private class functions for output types:) */
+
+    private OutputToConsoleLog(OutputText: string): string
+    {
+        console.log(OutputText);
+        return "";
+    }
+
+    private OutputToNowhere(OutputText: string): string
+    {
+        return "";
+    }
 }
 
-let ZombieStatus: string[] = [ "Alive", "Zombie", "Dead", "Unknown" ];
+let ZombieStatus: string[] = [ "Alive", "Zombie", "Dead", "Unknown", "Omnipotent" ];
 
 let PlanetZombie = new ZombieWorld();
 
-PlanetZombie.AddZombie("Alan", "Parsons", 2);
-PlanetZombie.AddZombie("Michael", "Jackson", 1);
-PlanetZombie.AddZombie("Ronald", "Reagan", 3);
-PlanetZombie.AddZombie("Freddie", "Mac", 4);
-PlanetZombie.AddZombie("Brie", "Larson", 5);    
+PlanetZombie.AddPerson("Alan", "Parsons", 2);
+PlanetZombie.AddPerson("Michael", "Jackson", 1);
+PlanetZombie.AddPerson("Ronald", "Reagan", 3);
+PlanetZombie.AddPerson("Freddie", "Mac", 4);
+PlanetZombie.AddPerson("Brie", "Larson", 5);    
 
 let StatusResponse: number;
 let Status: string;
 
 for (let count: number = 0; count < PlanetZombie.ZombieCount; ++count)
 {
-    StatusResponse = PlanetZombie.Zombies[count].Status;
+    StatusResponse = PlanetZombie.Population[count].Status;
 
-    // If/else method
+    // If / else method
 
-    Status = "Invalid";
-
-    if ((StatusResponse >= 1) && (StatusResponse <= 4))
-    {
-        Status = ReturnStatus(StatusResponse);
-    }
+    let Status: string = ReturnStatus(StatusResponse);
     
-    PlanetZombie.OutputZombies(PlanetZombie.Zombies[count].FirstName + " " + PlanetZombie.Zombies[count].LastName
+    PlanetZombie.OutputPersonnel(PlanetZombie.Population[count].FirstName + " " + PlanetZombie.Population[count].LastName
         + " is status: " + Status + " (if/else method)");
 
     // Switch method
 
-    Status = "Invalid";
-
     switch (StatusResponse)
     {
-        case 1:
-            Status = ReturnStatus(StatusResponse);
-            break;
-
-        case 2:
-            Status = ReturnStatus(StatusResponse);
-            break;
-
-        case 3:
-            Status = ReturnStatus(StatusResponse);
-            break;
-    
-        case 4:
-            Status = ReturnStatus(StatusResponse);
-            break;
-    
         default:
-            Status = "Invalid";
+            Status = ReturnStatus(StatusResponse);
             break;
     }
 
-    PlanetZombie.OutputZombies(PlanetZombie.Zombies[count].FirstName + " " + PlanetZombie.Zombies[count].LastName
+    PlanetZombie.OutputPersonnel(PlanetZombie.Population[count].FirstName + " " + PlanetZombie.Population[count].LastName
         + " is status: " + Status + " (switch method)");
 }
 
 console.log ("- For/of method:");
 
-for (let Dude of PlanetZombie.Zombies)
+for (let Dude of PlanetZombie.Population)
 {
-    PlanetZombie.OutputZombies(Dude.FirstName + " " + Dude.LastName + " is " 
+    PlanetZombie.OutputPersonnel(Dude.FirstName + " " + Dude.LastName + " is " 
         + ReturnStatus(Dude.Status));
 }
 
 function ReturnStatus(statusNumber: number): string
 {
-    let statusName: string = "Invalid";
+    let statusName: string;
 
-    if ((statusNumber >= 1) && (statusNumber <= 4))
+    if ((statusNumber >= 1) && (statusNumber <= (ZombieStatus.length)))
     {
         statusName = ZombieStatus[statusNumber-1];
+    }
+    else
+    {
+        statusName = "Invalid";
     }
 
     return statusName + " (" + statusNumber + ")";
 }
 
-function OutputToConsole(OutputText: string): void
-{
-    console.log(OutputText);
-}
